@@ -6,10 +6,7 @@ import java.util.List;
 
 public interface UserService {
 
-    void save(User user);
-
-    void addUser(String name,String email);
-
+    void addUser(String username,String email);
     List<User> getAllUsers();
-    User findByName(String username);
+    User findByUsername(String username);
 }

@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+//Στους controllers βρισκεται η εισοδος του backend
+//Οι controllers ειναι σε αναμονη για requests του χρηστη
+//και οποτε υπαρξει request ενημερόνουν το Service
+// ωστε να εκτελέσει την ενεργεια που ζήτησε ο χρηστης
 @RestController
 public class UserController {
 
@@ -20,7 +24,7 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/addUser")
     public ResponseEntity<?> addUser(@RequestParam(value="name") String name,
                                      @RequestParam(value = "email") String email) {
         userService.addUser(name, email);
@@ -34,6 +38,6 @@ public class UserController {
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     public User getUser(@RequestParam(value = "name")String name){
-        return userService.findByName(name);
+        return userService.findByUsername(name);
     }
 }
